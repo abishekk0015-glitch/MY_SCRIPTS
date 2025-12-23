@@ -26,13 +26,13 @@ first_date="2025-10-26"
 last_date="2025-11-25"
 
 # Original SRMS queries (These queries fetch tracking data)
-srms_query="select distinct client_service_request_id , sr_id from service_requests s where s.client_id not in ('flipkart') and s.sr_type in ('NONFA_FORWARD_LARGE_E2E_EKART','NONFA_RVP_LARGE_E2E_EKART','NONFA_RVP_E2E_EKART')
+srms_query="select distinct client_service_request_id , sr_id from service_requests s where s.client_id not in ('flipkart') and s.sr_type in ('NONFA_FORWARD_LARGE_E2E_EKART','NONFA_RVP_LARGE_E2E_EKART')
 AND s.created_at >= '2023-06-01 00:00:00' AND s.updated_at between '$first_date 00:00:00' and '$last_date 23:59:59';"
 
-srms_query_2="select distinct client_service_request_id , sr_id from service_requests s where s.client_id not in ('flipkart') and s.sr_type in ('NONFA_FORWARD_LARGE_E2E_EKART','NONFA_RVP_LARGE_E2E_EKART','NONFA_RVP_E2E_EKART')
+srms_query_2="select distinct client_service_request_id , sr_id from service_requests s where s.client_id not in ('flipkart') and s.sr_type in ('NONFA_FORWARD_LARGE_E2E_EKART','NONFA_RVP_LARGE_E2E_EKART')
 AND s.created_at between '$first_date 00:00:00' and '$last_date 23:59:59';"
 
-srms_query_3="select distinct client_service_request_id , sr_id from service_requests s where s.client_id not in ('flipkart') and s.sr_type in ('NONFA_FORWARD_LARGE_E2E_EKART','NONFA_RVP_LARGE_E2E_EKART','NONFA_RVP_E2E_EKART')
+srms_query_3="select distinct client_service_request_id , sr_id from service_requests s where s.client_id not in ('flipkart') and s.sr_type in ('NONFA_FORWARD_LARGE_E2E_EKART','NONFA_RVP_LARGE_E2E_EKART')
 AND s.updated_at between '$first_date 00:00:00' and '$last_date 23:59:59';"
 
 echo "$srms_query" | mysql -u "$srms_user" -p"$srms_pwd" -h "$srms_ip" -P "$srms_port" "$srms_db" | uniq | sed 's|\t|,|g' > $CWD/srms_total_temp_1.csv
