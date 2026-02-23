@@ -9,7 +9,7 @@ LAST_DATE=`date +\%Y-\%m-\%d -d "-1 days"`
 
 CWD="/mnt/archive/test2"
 
-rm -f $CWD/*.csv
+rm -rf "${CWD:?}"/*
 
 srms_user="v-ekl--0p2iTiS2H"
 srms_pwd="qMsNrAM9nX-mkQiqWwSK"
